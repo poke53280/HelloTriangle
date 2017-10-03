@@ -10,6 +10,8 @@
 #include <cstring>
 #include <set>
 
+// Test edit from utv computer.
+
 const int WIDTH = 800;
 const int HEIGHT = 600;
 
