@@ -21,6 +21,10 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shader_base.frag" />
+    <None Include="shader_base.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{fd7d4bc4-9420-49f7-9427-459a188e350c}</ProjectGuid>
