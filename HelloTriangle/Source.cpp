@@ -10,12 +10,6 @@
 #include <cstring>
 #include <set>
 
-// Test edit from utv computer.
-// Test edit2 from utv computer.
-
-// Test edit 3 from ENGEL 1
-
-
 
 
 const int WIDTH = 800;

@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shader_base.vert" />
     <None Include="shader_base.frag" />
+    <None Include="shader_base.vert" />
   </ItemGroup>
 </Project>
