@@ -148,13 +148,55 @@ private:
   VkSemaphore imageAvailableSemaphore;
   VkSemaphore renderFinishedSemaphore;
 
+  static GLFWwindow* createWindow(const int nFullScreenMonitor) {
+
+    int nMonitor;
+
+    GLFWmonitor* pcPreferredMonitor = nullptr;
+
+    GLFWmonitor** aacmonitors = glfwGetMonitors(&nMonitor);
+
+    printf("Count = %d\r\n", nMonitor);
+
+    for (int iMonitor = 0; iMonitor < nMonitor; iMonitor++) {
+      GLFWmonitor* pcMonitor = aacmonitors[iMonitor];
+
+      const char* pzName = glfwGetMonitorName(pcMonitor);
+      const GLFWvidmode mode = *glfwGetVideoMode(pcMonitor);
+
+      printf("[%d] Monitor name = '%s'\r\n", iMonitor, pzName);
+
+      printf("   W=%d, H=%d, RGB=(%d,%d,%d), f=%d Hz\r\n",
+          mode.width, mode.height, mode.redBits, mode.greenBits, mode.blueBits, mode.refreshRate);
+
+      if (iMonitor == nFullScreenMonitor) {
+        pcPreferredMonitor = pcMonitor;
+      }
+    }
+
+    GLFWwindow* w = nullptr;
+
+    if (pcPreferredMonitor == nullptr) {
+
+      w = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+    }
+    else {
+
+      const GLFWvidmode mode = *glfwGetVideoMode(pcPreferredMonitor);
+      w = glfwCreateWindow(mode.width, mode.height, "Vulkan", pcPreferredMonitor, nullptr);
+
+    }
+    return w;
+
+  }
+
   void initWindow() {
     glfwInit();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-    window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+    window = createWindow(2);
 
     glfwSetWindowUserPointer(window, this);
     glfwSetWindowSizeCallback(window, HelloTriangleApplication::onWindowResized);
@@ -1056,6 +1098,8 @@ private:
     return VK_FALSE;
   }
 };
+
+
 
 int main() {
 
