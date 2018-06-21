@@ -20,10 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader_base.frag" />
     <None Include="shader_base.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Defs.h" />
+    <ClInclude Include="ThreadPool.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
